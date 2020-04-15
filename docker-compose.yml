@@ -4,7 +4,7 @@ services:
   store:
     build:
       args:
-        TERRAFORM_VERSION: ${TERRAFORM_VERSION}
+        TERRAFORM_VERSION: 0.12.24
       context: .
     volumes:
       - ${HOST_AWS_CREDENTIALS_PATH}:/root/.aws
