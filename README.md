@@ -14,13 +14,13 @@
 // main.tf
 terraform {
 	backend "s3" {
-		bucket = "my-unique-project-name-terraform-state"
-		dynamodb_table = "my-unique-project-name-terraform-state-locks"
-		profile = "my-aws-profile"
-		region = "my-aws-region"
+		bucket                  = "my-unique-project-name-terraform-state"
+		dynamodb_table          = "my-unique-project-name-terraform-state-locks"
+		profile                 = "my-aws-profile"
+		region                  = "my-aws-region"
 
-		encrypt = true
-		key = "terraform.tfstate"
+		encrypt                 = true
+		key                     = "terraform.tfstate"
 		shared_credentials_file = "/root/.aws"
 	}
 }
