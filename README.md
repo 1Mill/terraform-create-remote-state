@@ -7,7 +7,7 @@
 6. Review the output and type `yes` to create the remote state
 7. Your S3 bucket should be created
 8. Before existing the container, run `terraform destroy` to delete everything
-  * If you leave the container, the local terraform state is lost
+    * If you leave the container, the local terraform state is lost
 
 # Access your remote state in your projects
 ```javascript
