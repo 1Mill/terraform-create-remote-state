@@ -1,4 +1,8 @@
-# Overview
+
+# Manage terraform remote state on AWS
+
+## Overview
+
 1. Create .env with `HOST_AWS_CREDENTIALS_PATH`; see `example.env`
 2. Run `docker-compose build`
 3. Run `docker-compose run store sh`
@@ -9,19 +13,20 @@
 8. Before existing the container, run `terraform destroy` to delete everything
     * If you leave the container, the local terraform state is lost
 
-# Access your remote state in your projects
-```javascript
-// main.tf
-terraform {
-	backend "s3" {
-		bucket                  = "my-unique-project-name-terraform-state"
-		dynamodb_table          = "my-unique-project-name-terraform-state-locks"
-		profile                 = "my-aws-profile"
-		region                  = "my-aws-region"
+## Access your remote state in your projects
 
-		encrypt                 = true
-		key                     = "terraform.tfstate"
-		shared_credentials_file = "/root/.aws"
-	}
-}
-```
+    ```javascript
+    // main.tf
+    terraform {
+      backend "s3" {
+        bucket                  = "my-unique-project-name-terraform-state"
+        dynamodb_table          = "my-unique-project-name-terraform-state-locks"
+        profile                 = "my-aws-profile"
+        region                  = "my-aws-region"
+
+        encrypt                 = true
+        key                     = "terraform.tfstate"
+        shared_credentials_file = "/root/.aws"
+      }
+    }
+    ```
