@@ -1,11 +1,12 @@
-variable "app_name" {
+variable "APPLICATION_NAME" {
 	type = string
 }
-
-variable "aws_profile" {
+variable "AWS_ACCESS_KEY_ID" {
 	type = string
 }
-
-variable "aws_region" {
+variable "AWS_REGION" {
+	type = string
+}
+variable "AWS_SECRET_ACCESS_KEY" {
 	type = string
 }

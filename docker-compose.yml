@@ -1,10 +1,7 @@
 version: '3'
 
 services:
-  store:
-    build:
-      args:
-        TERRAFORM_VERSION: 0.12.24
-      context: .
+  create:
+    build: .
     volumes:
-      - ${HOST_AWS_CREDENTIALS_PATH}:/root/.aws
+      - ./store:/app

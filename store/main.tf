@@ -1,7 +1,7 @@
 resource "aws_dynamodb_table" "terraform_locks" {
 	billing_mode	= "PAY_PER_REQUEST"
 	hash_key 	= "LockID"
-	name 		= "${var.app_name}-terraform-state-locks"
+	name 		= "${var.APPLICATION_NAME}-terraform-state-locks"
 
 	attribute {
 		name 	= "LockID"
@@ -10,7 +10,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-	bucket = "${var.app_name}-terraform-state"
+	bucket = "${var.APPLICATION_NAME}-terraform-state"
 
 	versioning {
 		enabled = true

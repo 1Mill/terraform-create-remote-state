@@ -1,6 +1,6 @@
 provider "aws" {
-	profile			= var.aws_profile
-	region 			= var.aws_region
-	shared_credentials_file	= "/root/.aws"
-	version 		= "~> 2.57"
+	access_key = var.AWS_ACCESS_KEY_ID
+	region = var.AWS_REGION
+	secret_key = var.AWS_SECRET_ACCESS_KEY
+	version = "~> 2.57"
 }
