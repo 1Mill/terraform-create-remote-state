@@ -23,8 +23,8 @@
         // region = ENVIRONMENT AWS_DEFAULT_REGION
         // secret_key = ENVIRONMENT AWS_SECRET_ACCESS_KEY
 
-        bucket = "my-application-name-terrafor-state"
-        dynamodb_table = "my-application-name-terrafor-state-locks"
+        bucket = "my-application-name-terraform-state"
+        dynamodb_table = "my-application-name-terraform-state-locks"
         encrypt = true
         key = "terraform.tfstate"
       }
