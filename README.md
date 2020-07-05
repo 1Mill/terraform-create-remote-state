@@ -3,15 +3,13 @@
 
 ## Overview
 
-1. Create .env with `HOST_AWS_CREDENTIALS_PATH`; see `example.env`
-2. Run `docker-compose build`
-3. Run `docker-compose run store sh`
-4. Inside the container, run `terraform init`
-5. Run `terraform apply` and answer the prompts
-6. Review the output and type `yes` to create the remote state
-7. Your S3 bucket should be created
-8. Before existing the container, run `terraform destroy` to delete everything
-    * If you leave the container, the local terraform state is lost
+1. Create secret .env file; see `example.env`
+1. Run `docker-compose build`
+1. Run `docker-cmpose run create sh` to interact with the docker container
+1. Inside the docker container, run `terraform init && terraform apply`: this will generate an output.
+1. Review the output and type `yes` to create the remote state
+1. Once terraform is finished, you should see your S3 bucket created in AWS
+1. If you do not want to keep this S3 bucket, run `terraform destroy` to delete everything
 
 ## Access your remote state in your projects
 
@@ -19,14 +17,16 @@
     // main.tf
     terraform {
       backend "s3" {
-        bucket                  = "my-unique-project-name-terraform-state"
-        dynamodb_table          = "my-unique-project-name-terraform-state-locks"
-        profile                 = "my-aws-profile"
-        region                  = "my-aws-region"
+        // https://www.terraform.io/docs/backends/types/s3.html#configuration-variables
+        // access_key = ENVIRONMENT AWS_ACCESS_KEY_ID
+        // profile = ENVIRONMENT AWS_PROFILE
+        // region = ENVIRONMENT AWS_DEFAULT_REGION
+        // secret_key = ENVIRONMENT AWS_SECRET_ACCESS_KEY
 
-        encrypt                 = true
-        key                     = "terraform.tfstate"
-        shared_credentials_file = "/root/.aws"
+        bucket = "my-application-name-terrafor-state"
+        dynamodb_table = "my-application-name-terrafor-state-locks"
+        encrypt = true
+        key = "terraform.tfstate"
       }
     }
     ```
